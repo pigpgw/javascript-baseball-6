@@ -2,11 +2,9 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 
 class App {
   constructor() {
-    this.count = '';
     this.input;
     this.countResult;
     this.randomNumber;
-    this.gameCount = 0;
   }
   async play() {
     
@@ -15,7 +13,7 @@ class App {
 
     await this.getUserInput();
     this.checkValidInput(this.input);
-    this.countResult = this.checkStrikeBall(this.input, this.randomNumber);
+    this.countResult = this.countStrikeBall(this.input, this.randomNumber);
     this.printHintMessage(this.countResult);
 
     while (this.countResult.strike !== 3) {
@@ -29,11 +27,10 @@ class App {
   }
 
   async retry() {
-      this.input = '';
       await this.getUserInput();
       this.checkValidInput(this.input);
-      this.checkStrikeBall(this.input, this.randomNumber);
-      this.countResult = this.checkStrikeBall(this.input, this.randomNumber);
+      this.countStrikeBall(this.input, this.randomNumber);
+      this.countResult = this.countStrikeBall(this.input, this.randomNumber);
       this.printHintMessage(this.countResult);
     }
 
@@ -91,7 +88,7 @@ class App {
   }
 
   isThreeNumber(input) {
-    return /[0-9]{3}/g.test(input);
+    return /[1-9]{3}/g.test(input);
   }
 
   isSameNumber(input) {
@@ -100,13 +97,13 @@ class App {
     return (checkSame.length === compareSame.size);
   }
 
-  checkStrikeBall(userInput,computerInput){
-    let strike = this.checkStrike(userInput,computerInput);
-    let ball = this.checkBall(userInput,computerInput);
+  countStrikeBall(userInput,computerInput){
+    const strike = this.countStrike(userInput,computerInput);
+    const ball = this.countBall(userInput,computerInput);
     return { strike, ball }
   }
 
-  checkStrike(userInput, computerInput) {
+  countStrike(userInput, computerInput) {
     let strike = 0;
     for (let i = 0; i < userInput.length; i++) {
       if (userInput[i] === computerInput[i]) {
@@ -116,7 +113,7 @@ class App {
     return strike;
   }
 
-  checkBall(userInput, computerInput){
+  countBall(userInput, computerInput){
     let ball = 0;
     for (let i = 0; i < userInput.length; i++){
       for (let j = 0; j < userInput.length; j++) {
