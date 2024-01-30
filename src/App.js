@@ -18,7 +18,6 @@ class App {
 
   async gameMainLogic(){
     this.solution = this.computer.makeRandomNumber()
-    console.log("solution",this.solution)
     let strike = 0
     let ball = 0
     while (strike !== 3){
