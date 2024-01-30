@@ -18,6 +18,7 @@ class App {
 
   async gameMainLogic(){
     this.solution = this.computer.makeRandomNumber()
+    console.log("solution",this.solution)
     let strike = 0
     let ball = 0
     while (strike !== 3){
@@ -33,9 +34,9 @@ class App {
 
   async rePlay() {
     const input = await Console.readLineAsync('게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요')
-    let userInput = Number(input)
-    this.validator.checkLength1(userInput)
-    if (userInput === 1) {
+    let userInput;
+    if (this.validator.checkLength1(input)) userInput = input
+    if (userInput == 1) {
       this.gameMainLogic()
     } else {
       return
@@ -44,6 +45,8 @@ class App {
 
   async getUserInput() {
     let input = await Console.readLineAsync('숫자를 입력해주세요 : ');
+    // 실수로 띄어쓰기를 입력했을때 처리
+    input = input.split(" ").join("")
     if (this.validator.isValidInput(input)) this.userInput = input.split("").map((v) => Number(v));
   }
 
