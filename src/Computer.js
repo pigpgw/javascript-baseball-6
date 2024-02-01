@@ -17,8 +17,5 @@ class Computer {
 
 }
 
-const computer = new Computer();
-computer.makeSolution();
-console.log(computer.getSolution());
 
 export default Computer;
