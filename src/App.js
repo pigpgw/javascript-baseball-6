@@ -14,31 +14,32 @@ class App {
   
 
   async play() {
-    Console.print(GameMessage.START_MESSAGE);
     this.computer.makeSolution()
-    // console.log("정답값",this.computer.seeSolution())
-    this.mainLogic()
+    Console.print(GameMessage.START_MESSAGE);
+    await this.mainLogic()
   }
 
   async mainLogic() {
     await this.setUserInput();
     this.printStrikeBall()
-    if (this.computer.assessUserInput(this.user.getNumber()).strike !== 3) this.mainLogic()
+    if (this.computer.assessUserInput(this.user.getNumber()).strike !== 3) await this.mainLogic()
     else {
       const replayResponse = await Console.readLineAsync("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
       if (parseInt(replayResponse) === 1) {
-        this.play();
+        this.computer.makeSolution()
+        this.mainLogic();
       } else {
         return;
       }
     }
   }
 
-  async setUserInput(){
-    const input = await Console.readLineAsync("숫자를 입력해주세요 : ")
-    const changeDataStructureInput = input.split("").map(v => Number(v))
-    if (this.validator.validInput(changeDataStructureInput)) this.user.setNumber(changeDataStructureInput);
-  }
+async setUserInput(){
+    const input = await Console.readLineAsync("숫자를 입력해주세요 : ");
+  if (this.validator.validInput(input)) {
+    this.user.setNumber(input);
+    }
+}
 
   printStrikeBall(){
     const { strike, ball } = this.computer.assessUserInput(this.user.getNumber())

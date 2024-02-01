@@ -8,14 +8,13 @@ class Validator {
     }
 
     isNumber(input){
-        input.forEach(v => {
-            if (isNaN(v)) throw new Error(GameMessage.INVALID_INPUT_NOT_A_NUMBER);
-        });
+        if (isNaN(input)) throw new Error(GameMessage.INVALID_INPUT_NOT_A_NUMBER)
         return true
     }
     // 먼저 길이 체크 후 중복 검사
     isValidLength(input) {
-        if (input.length !== 3) throw new Error(GameMessage.INVALID_INPUT_NOT_A_CORRECT_LENGTH)
+        if (input.length !== 3) throw new Error(GameMessage.INVALID_INPUT_NOT_A_CORRECT_LENGTH);
+        return true
     }
 
     isDuplicate(input){

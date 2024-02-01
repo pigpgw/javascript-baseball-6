@@ -21,7 +21,8 @@ class Computer {
     assessUserInput(input) {
         let strike = 0;
         let ball = 0;
-        input.forEach((item, index) => {
+        const userInput = input.split("").map(item => Number(item));
+        userInput.forEach((item, index) => {
             if ((this.#solution.indexOf(item) === index) && this.#solution.includes(item)) strike += 1;
             else if ((this.#solution.indexOf(item) !== index) && this.#solution.includes(item)) ball += 1;
         });
