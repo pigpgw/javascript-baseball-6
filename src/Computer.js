@@ -1,4 +1,5 @@
 import { Random } from '@woowacourse/mission-utils';
+import { VALID_INPUT_LENGTH } from './MasicNumber.js'; 
 
 class Computer {
     #solution;
@@ -9,7 +10,7 @@ class Computer {
 
     makeSolution() {
         const computer = [];
-        while (computer.length < 3) {
+        while (computer.length < VALID_INPUT_LENGTH) {
             const number = Random.pickNumberInRange(1, 9);
             if (!computer.includes(number)) {
                 computer.push(number);
@@ -21,7 +22,7 @@ class Computer {
     assessUserInput(input) {
         let strike = 0;
         let ball = 0;
-        const userInput = input.split('').map(item => Number);
+        const userInput = input.split('').map(Number);
         userInput.forEach((item, index) => {
             if (this.#solution.indexOf(item) === index && this.#solution.includes(item)) strike += 1;
             else if (this.#solution.indexOf(item) !== index && this.#solution.includes(item)) ball += 1;

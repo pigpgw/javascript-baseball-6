@@ -1,4 +1,6 @@
 import GameMessage from './GameMessage.js';
+import { VALID_INPUT_LENGTH } from './MasicNumber.js'; 
+
 class Validator {
     validInput(input) {
         this.isNumber(input);
@@ -13,14 +15,12 @@ class Validator {
     }
 
     isValidLength(input) {
-        if (input.length !== 3) throw new Error(GameMessage.INVALID_INPUT_NOT_A_CORRECT_LENGTH);
+        if (input.length !== VALID_INPUT_LENGTH) throw new Error(GameMessage.INVALID_INPUT_NOT_A_CORRECT_LENGTH);
         return true;
     }
 
     isDuplicate(input) {
-        const set = new Set(input);
-        const newArr = [...set];
-        if (newArr.length !== 3) throw new Error(GameMessage.INVALID_INPUT_IS_DUPLICATED);
+        if ([...new Set(input)].length !== VALID_INPUT_LENGTH) throw new Error(GameMessage.INVALID_INPUT_IS_DUPLICATED);
         return true;
     }
 }
