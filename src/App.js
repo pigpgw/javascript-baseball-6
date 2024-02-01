@@ -11,12 +11,13 @@ class App {
   
 
   async play() {
-    this.getUserInput();
+    this.setUserInput();
   }
 
-  async getUserInput(){
+  async setUserInput(){
     const input = await Console.readLineAsync("숫자를 입력해주세요 : ")
-    
+    const changeDataStructureInput = input.split("").map(v => Number(v))
+    this.user.setNumber(changeDataStructure)
   }
 }
 
