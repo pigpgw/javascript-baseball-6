@@ -14,15 +14,25 @@ class App {
   
 
   async play() {
+    this.mainLogic()
+  }
+
+  async mainLogic() {
     GameMessage.START_MESSAGE;
-    this.setUserInput();
-    console.log(this.user.getNumber())
+    this.computer.makeSolution()
+    await this.setUserInput();
+    console.log("check user input saved", this.user.getNumber())
+    this.checkStrikeBall()
   }
 
   async setUserInput(){
     const input = await Console.readLineAsync("숫자를 입력해주세요 : ")
     const changeDataStructureInput = input.split("").map(v => Number(v))
     if (this.validator.validInput(changeDataStructureInput)) this.user.setNumber(changeDataStructureInput);
+  }
+
+  checkStrikeBall(){
+    const { strike, ball } = this.computer.assessUserInput(this.user.getNumber())
   }
 }
 

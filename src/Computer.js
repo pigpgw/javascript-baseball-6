@@ -14,6 +14,15 @@ class Computer {
         return this.#solution = computer
     }
     
+    assessUserInput(input){
+        let strike = 0;
+        let ball = 0;
+        input.forEach((item,index) => {
+            if (index === this.#solution[item]) strike += 1;
+            else if ((index !== this.#solution[item]) && this.#solution.includes(item)) ball += 1;
+        });
+        return {strike, ball}
+    }
 
 }
 
