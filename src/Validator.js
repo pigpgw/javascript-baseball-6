@@ -1,15 +1,15 @@
-import { GameMessage } from "./GameMessage";
+import GameMessage  from "./GameMessage.js";
 class Validator {
     validInput(input){
         this.isNumber(input)
         this.isValidLength(input)
-        this.isDuplicate(true)
+        this.isDuplicate(input)
         return true
     }
 
     isNumber(input){
         input.forEach(v => {
-            if (typeof v !== Number) throw new Error(GameMessage.INVALID_INPUT_NOT_A_NUMBER);
+            if (isNaN(v)) throw new Error(GameMessage.INVALID_INPUT_NOT_A_NUMBER);
         });
         return true
     }
