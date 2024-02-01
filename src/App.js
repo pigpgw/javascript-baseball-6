@@ -37,7 +37,7 @@ class App {
 
   async setUserInput() {
     const input = await Console.readLineAsync("숫자를 입력해주세요 : ")
-    if (this.validator.validInput(input)) {
+    if (this.validator.isValidInput(input)) {
       this.user.setNumber(input)
     }
   }
