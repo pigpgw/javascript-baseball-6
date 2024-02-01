@@ -14,7 +14,7 @@ class App {
   
 
   async play() {
-    GameMessage.START_MESSAGE;
+    Console.print(GameMessage.START_MESSAGE);
     this.computer.makeSolution()
     console.log("정답값",this.computer.seeSolution())
     this.mainLogic()
@@ -23,7 +23,17 @@ class App {
   async mainLogic() {
     await this.setUserInput();
     this.printStrikeBall()
+  
     if (this.computer.assessUserInput(this.user.getNumber()).strike !== 3) this.mainLogic()
+    else {
+      const replayResponse = await Console.readLineAsync("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+      if (parseInt(replayResponse) === 1) {
+        this.play();
+      } else {
+        return;
+      }
+    }
+
   }
 
   async setUserInput(){
