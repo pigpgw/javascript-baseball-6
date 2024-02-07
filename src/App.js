@@ -9,7 +9,6 @@ class App {
   constructor() {
     this.user = new User();
     this.computer = new Computer();
-    this.validator = new Validator();
   }
 
   async play() {
@@ -38,7 +37,7 @@ class App {
 
   async setUserInput() {
     const input = await Console.readLineAsync("숫자를 입력해주세요 : ");
-    if (this.validator.isValidInput(input)) {
+    if (Validator.isValidInput(input)) {
       this.user.setNumber(input);
     }
   }
