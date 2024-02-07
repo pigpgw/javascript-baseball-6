@@ -31,7 +31,7 @@ class App {
         this.computer.makeSolution();
         this.mainLogic();
       } else {
-        return
+        return;
       }
     }
   }
