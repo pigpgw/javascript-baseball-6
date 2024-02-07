@@ -1,8 +1,14 @@
+// eslint-disable-next-line import/no-unresolved
 import { Console } from "@woowacourse/mission-utils";
+// eslint-disable-next-line import/no-unresolved
 import User from "./User.js";
+// eslint-disable-next-line import/no-unresolved
 import Computer from "./Computer.js";
+// eslint-disable-next-line import/no-unresolved
 import Validator from "./Validator.js";
+// eslint-disable-next-line import/no-unresolved
 import GameMessage from "./GameMessage.js";
+// eslint-disable-next-line import/no-unresolved
 import { RETRY_RESPONSE } from "./MasicNumber.js";
 
 class App {
@@ -26,10 +32,11 @@ class App {
       const replayResponse = await Console.readLineAsync(
         "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
       );
-      if (parseInt(replayResponse) === RETRY_RESPONSE) {
+      if (parseInt(replayResponse, 10) === RETRY_RESPONSE) {
         this.computer.makeSolution();
         this.mainLogic();
       } else {
+        // eslint-disable-next-line no-useless-return
         return;
       }
     }
