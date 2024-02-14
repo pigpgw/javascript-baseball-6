@@ -9,7 +9,7 @@ import Validator from "./Validator.js";
 // eslint-disable-next-line import/no-unresolved
 import GameMessage from "./GameMessage.js";
 // eslint-disable-next-line import/no-unresolved
-import { RETRY_RESPONSE } from "./MasicNumber.js";
+import { RETRY_RESPONSE, FULL_STRIKE } from "./MasicNumber.js";
 
 class App {
   constructor() {
@@ -26,7 +26,10 @@ class App {
   async mainLogic() {
     await this.setUserInput();
     this.printStrikeBall();
-    if (this.computer.assessUserInput(this.user.getNumber()).strike !== 3)
+    if (
+      this.computer.assessUserInput(this.user.getNumber()).strike !==
+      FULL_STRIKE
+    )
       await this.mainLogic();
     else {
       const replayResponse = await Console.readLineAsync(
@@ -57,7 +60,7 @@ class App {
       Console.print(GameMessage.NOTHING_MESSAGE);
     } else if (strike > 0 && ball > 0)
       Console.print(`${strike}볼 ${ball}스트라이크`);
-    else if (strike === 3) Console.print(GameMessage.SOLVED_MESSAGE);
+    else if (strike === FULL_STRIKE) Console.print(GameMessage.SOLVED_MESSAGE);
   }
 }
 
