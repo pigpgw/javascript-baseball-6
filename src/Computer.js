@@ -1,7 +1,11 @@
 // eslint-disable-next-line import/no-unresolved
 import { Random } from "@woowacourse/mission-utils";
 // eslint-disable-next-line import/no-unresolved
-import { VALID_INPUT_LENGTH } from "./MasicNumber.js";
+import {
+  VALID_INPUT_LENGTH,
+  MIN_RANDOM_NUMBER,
+  MAX_RANDOM_NUMBER,
+} from "./MasicNumber.js";
 
 class Computer {
   #solution;
@@ -13,7 +17,10 @@ class Computer {
   makeSolution() {
     const computer = [];
     while (computer.length < VALID_INPUT_LENGTH) {
-      const number = Random.pickNumberInRange(1, 9);
+      const number = Random.pickNumberInRange(
+        MIN_RANDOM_NUMBER,
+        MAX_RANDOM_NUMBER
+      );
       if (!computer.includes(number)) {
         computer.push(number);
       }
