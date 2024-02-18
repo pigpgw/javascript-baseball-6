@@ -1,11 +1,9 @@
-// eslint-disable-next-line import/no-unresolved
 import { Random } from "@woowacourse/mission-utils";
-// eslint-disable-next-line import/no-unresolved
 import {
   VALID_INPUT_LENGTH,
   MIN_RANDOM_NUMBER,
   MAX_RANDOM_NUMBER,
-} from "./MasicNumber.js";
+} from "./gameConstants.js";
 
 class Computer {
   #solution;
